@@ -2,10 +2,10 @@ import React from "react";
 // import { Container, Form, FormGroup,Input, Button} from "reactstrap";
 import useStyles from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
-import Filter from "./filters/Filter";
+
 import { IconButton, TextField} from "@material-ui/core";
 
-function SearchBar({ handleSubmit, handleChange }) {
+function SearchBar({ data, handleSubmit, handleChange }) {
   const classes = useStyles();
 
   return (
@@ -20,7 +20,6 @@ function SearchBar({ handleSubmit, handleChange }) {
           <SearchIcon />
         </IconButton>
       </form>
-      <Filter />
     </div>
   );
 }
