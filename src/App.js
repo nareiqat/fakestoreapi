@@ -65,8 +65,8 @@ function App() {
     setValue(newValue);
     setMinPrice(newValue[0])
     setMaxPrice(newValue[1])
-    console.log(minPrice, maxPrice);
-    console.log(data[0].price)
+    // console.log(minPrice, maxPrice);
+    // console.log(data[0].price)
     
   };
 

@@ -22,9 +22,10 @@ export default function Products({minP, maxP ,data, input, category, value}) {
                         }
                     
                     }).filter((product) => {
-                        if(product.category === category){
+                        if(category === ""){
                             return product
-                        }else {
+                        }else if(product.category === category){
+                            
                             return product
                         }
                     }).filter((product) => {
