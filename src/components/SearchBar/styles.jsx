@@ -8,5 +8,7 @@ export default makeStyles(() => ({
         textAlign: 'center',
       
     },
-    
+    slider:{
+        width:'100%'
+    }
 }));

@@ -10,6 +10,8 @@ function App() {
   const [data, setData] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000);
   const apiUrl = 'https://fakestoreapi.com/products'
 
   useEffect(() => {
@@ -48,6 +50,13 @@ function App() {
     event.preventDefault()
     
   };
+
+  const filterPrice = (data) => {
+    data.forEach(product => {
+      if(min)
+    })
+
+  }
 
 
   return (
