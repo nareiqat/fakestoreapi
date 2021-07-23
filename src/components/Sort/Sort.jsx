@@ -1,35 +1,58 @@
 import React from 'react'
-import {Button, Menu, MenuItem} from '@material-ui/core'
+import { MenuItem, FormControl, Select,InputLabel} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core';
 
-export default function Sort() {
+export default function Sort({sortValue, handleChange}) {
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const useStyles = makeStyles((theme) => ({
+        button: {
+          display: 'block',
+          marginTop: theme.spacing(2),
+        },
+        formControl: {
+          margin: theme.spacing(1),
+          minWidth: 120,
+        },
+    }));
 
-    const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    };
+    const classes = useStyles();
+    // const [cat, setCat] = React.useState('');
+    const [open, setOpen] = React.useState(false);
+  
 
+    
+  
     const handleClose = () => {
-    setAnchorEl(null);
+      setOpen(false);
     };
+  
+    const handleOpen = () => {
+      setOpen(true);
+    };
+  
     return (
-        <div>
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                Sort by
-            </Button>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-            >
-                <MenuItem onClick={handleClose}>Hightolow</MenuItem>
-                <MenuItem onClick={handleClose}>lowtoHigh</MenuItem>
-                
-            </Menu>
-        </div>
-    )
+      <div>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-controlled-open-select-label">Sort by</InputLabel>
+          <Select
+            labelId="demo-controlled-open-select-label"
+            id="demo-controlled-open-select"
+            open={open}
+            onClose={handleClose}
+            onOpen={handleOpen}
+            value={sortValue}
+            onChange={handleChange}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"hightolow"}>High to low</MenuItem>
+            <MenuItem value={"lowtohigh"}>low to high</MenuItem>
+            
+          </Select>
+        </FormControl>
+      </div>
+    );
 }
 
 

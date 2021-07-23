@@ -12,12 +12,14 @@ function App() {
   const [input, setInput] = useState("")
   const [state, setState] = useState("")
   const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([])
+  
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
   const [value, setValue] = useState([0, 1000]);
+  const [sortValue, setSortValue] = useState("")
+  const [sortedData, setSortedData ] = useState([])
   const [category, setCategory] = useState("")
   const apiUrl = 'https://fakestoreapi.com/products'
   
@@ -35,7 +37,7 @@ function App() {
         .then(
           (result) => {
             setData(result)
-            setFilteredData(result)
+            setSortedData(result)
             setLoading(false);
             console.log(result);
           },
@@ -77,26 +79,45 @@ function App() {
 
   }
 
+  const handleSort = event => {
+    setSortValue(event.target.value)
+    console.log(event.target.value)
+  }
 
-  // const handleChangeSize = () => {
-  //   if(sort !== ''){
-  //     data.sort((a,b) => (sort === 'lowtohigh') ? (a.price < b.price ? 1 : -1): (a.price > b.price ? 1:-1))
-  //   }else {
-  //     return data
-  //   }
-  //   return setFilteredData(data)
-  // }
- 
   
+  const sortHighTolow = (data, field) => {
+    return data.sort(function(a,b){
+      if (a[field] > b[field]) {
+        return 1;
+    }
+    if (b[field]> a[field]) {
+        return -1;
+    }
+    return 0;
+    })
+  };
 
+  const  sortLowtoHigh = (data, field) => {
+    return data.sort(function (a, b) {
+        if (a[field] > b[field]) {
+            return -1;
+        }
+        if (b[field]> a[field]) {
+            return 1;
+        }
+        return 0;
+    })
+ }
+
+  
 
   return (
     <div>
       <SearchBar  max={maxPrice} min={minPrice}  handleChange={inputHandler} handleSubmit={submitHandler} input={input}/>
       <FilterByCategory category={category} handleCategory={handleCategory}  />
       <Filter handleChange={handleFilterChange} value={value}  />
-      <Sort  />
-      <Products value={value} data={data} input={input} minP={minPrice} maxP={maxPrice} handleSlider={handleFilterChange} category={category} />
+      <Sort sortValue={sortValue}  handleChange={handleSort}  />
+      <Products sortValue={sortValue} sortAsc={sortLowtoHigh} sortDesc={sortHighTolow} value={value} data={data} input={input} minP={minPrice} maxP={maxPrice} handleSlider={handleFilterChange} category={category} />
     </div>
   );
 }
