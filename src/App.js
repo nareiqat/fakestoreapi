@@ -1,23 +1,59 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-
+import {useState, useEffect} from 'react' 
+import Products from './components/Products/Products'
+import SearchBar from './components/SearchBar/SearchBar';
 function App() {
+
+  const [input, setInput] = useState("")
+  const [state, setState] = useState("")
+  const [data, setData] = useState([]);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState('');
+  const apiUrl = 'https://fakestoreapi.com/products'
+
+  useEffect(() => {
+    const getData = () => {
+      fetch(apiUrl)
+        .then((res) => {
+          if (res.status >= 400) {
+            throw new Error("Can't fetch api data");
+          }
+          return res.json();
+        })
+        .then(
+          (result) => {
+            setData(result)
+            setLoading(false);
+            console.log(result);
+          },
+          (err) => {
+            setError(err);
+            setLoading(false);
+            alert(err.message);
+            console.log(err.message);
+          }
+        );
+    };
+    getData();
+  }, [apiUrl]);
+
+  const inputHandler = (event) => {
+    setInput(event.target.value);
+    // console.log(input);
+  };
+
+  const submitHandler = (event) => {
+    // console.log(input)
+    event.preventDefault()
+    
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <SearchBar handleChange={inputHandler} handleSubmit={submitHandler} input={input}/>
+      <Products data={data} input={input}/>
     </div>
   );
 }
