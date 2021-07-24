@@ -9,12 +9,13 @@ import {
 } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import useStyles from './styles';
+import SimpleModal from "./SimpleModal";
 
-function Product({ product, onAddToCart }) {
+function Product({ product }) {
 
     const classes = useStyles();
 
-    const handleAddToCart = () => onAddToCart(product.id, 1);
+    // const handleAddToCart = () => onAddToCart(product.id, 1);
 
   return (
     <Card className={classes.root}>
@@ -32,10 +33,11 @@ function Product({ product, onAddToCart }) {
             ${product.price}
           </Typography>
         </div>
+        <SimpleModal product={product} />
        
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
-        <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
+        <IconButton aria-label="Add to Cart" >
           <AddShoppingCart />
         </IconButton>
       </CardActions>
