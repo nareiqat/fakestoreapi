@@ -3,16 +3,16 @@ import './App.css';
 import {useState, useEffect} from 'react' 
 import Products from './components/Products/Products'
 import SearchBar from './components/SearchBar/SearchBar';
-import Filter from './components/Filter/Filter'
-import Sort from './components/Sort/Sort'
-import FilterByCategory from './components/Filter/FilterByCatergory';
+import Filter from './components/Drawer/Filter/FilterByPrice'
+import Sort from './components/Drawer/Sort/Sort'
+import FilterByCategory from './components/Drawer/Filter/FilterByCatergory';
+import Drawer from './components/Drawer/Drawer'
+import FilterByPrice from './components/Drawer/Filter/FilterByPrice';
 
 function App() {
 
   const [input, setInput] = useState("")
-  const [state, setState] = useState("")
   const [data, setData] = useState([]);
-  
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
   const [minPrice, setMinPrice] = useState(0);
@@ -63,7 +63,7 @@ function App() {
     
   };
 
-  const handleFilterChange = (event, newValue) => {
+  const handlePriceChange = (event, newValue) => {
     setValue(newValue);
     setMinPrice(newValue[0])
     setMaxPrice(newValue[1])
@@ -85,39 +85,17 @@ function App() {
   }
 
   
-  const sortHighTolow = (data, field) => {
-    return data.sort(function(a,b){
-      if (a[field] > b[field]) {
-        return 1;
-    }
-    if (b[field]> a[field]) {
-        return -1;
-    }
-    return 0;
-    })
-  };
-
-  const  sortLowtoHigh = (data, field) => {
-    return data.sort(function (a, b) {
-        if (a[field] > b[field]) {
-            return -1;
-        }
-        if (b[field]> a[field]) {
-            return 1;
-        }
-        return 0;
-    })
- }
-
   
 
   return (
     <div>
       <SearchBar  max={maxPrice} min={minPrice}  handleChange={inputHandler} handleSubmit={submitHandler} input={input}/>
-      <FilterByCategory category={category} handleCategory={handleCategory}  />
-      <Filter handleChange={handleFilterChange} value={value}  />
-      <Sort sortValue={sortValue}  handleChange={handleSort}  />
-      <Products sortValue={sortValue} sortAsc={sortLowtoHigh} sortDesc={sortHighTolow} value={value} data={data} input={input} minP={minPrice} maxP={maxPrice} handleSlider={handleFilterChange} category={category} />
+      {/* <FilterByCategory category={category} handleCategory={handleCategory}  />
+      <FilterByPrice handleChange={handleFilterChange} value={value}  />
+      <Sort sortValue={sortValue}  handleChange={handleSort}  /> */}
+      <Drawer handlePriceChange={handlePriceChange} value={value} category={category} handleCategory={handleCategory} sortValue={sortValue}  handleSort={handleSort} />
+     
+      <Products sortValue={sortValue} value={value} data={data} input={input} minP={minPrice} maxP={maxPrice} handleSlider={handlePriceChange} category={category} />
     </div>
   );
 }

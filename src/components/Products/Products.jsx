@@ -61,14 +61,3 @@ export default function Products({minP, maxP ,data, input, category, value, sort
             
     )
 }
-
-// .filter((product) => {
-//     if(sortValue === 'hightolow'){
-//         sortDesc(data, product.price)
-//     } else if(sortValue==="lowtohigh"){
-//         sortAsc(data, price)
-//     } else {
-//         return product
-//     }
-
-// })

@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { Typography, Slider } from "@material-ui/core";
 import useStyles from "./styles";
 
-export default function Filter({value, handleChange}) {
+export default function FilterByPrice({value, handlePriceChange}) {
 
   const classes = useStyles();
    
@@ -23,7 +23,7 @@ export default function Filter({value, handleChange}) {
         max={1000}
         step={50}
         value={value}
-        onChange={handleChange}
+        onChange={handlePriceChange}
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"
         getAriaValueText={valuetext}

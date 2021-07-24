@@ -26,21 +26,28 @@ function Product({ product }) {
       />
       <CardContent>
         <div className={classes.cardContent}>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h6" component="h2">
             {product.title}
           </Typography>
+        </div>
+        <div className={classes.cardContent}>
           <Typography gutterBottom variant="h5" component="h2">
             ${product.price}
           </Typography>
         </div>
-        <SimpleModal product={product} />
+        
+        {/* <SimpleModal product={product} /> */}
        
       </CardContent>
+      <CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
+        <SimpleModal product={product} />
         <IconButton aria-label="Add to Cart" >
           <AddShoppingCart />
         </IconButton>
       </CardActions>
+      </CardContent>
+      
     </Card>
   );
 }

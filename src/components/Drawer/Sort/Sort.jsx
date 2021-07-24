@@ -2,7 +2,7 @@ import React from 'react'
 import { MenuItem, FormControl, Select,InputLabel} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core';
 
-export default function Sort({sortValue, handleChange}) {
+export default function Sort({sortValue, handleSort}) {
 
     const useStyles = makeStyles((theme) => ({
         button: {
@@ -41,7 +41,7 @@ export default function Sort({sortValue, handleChange}) {
             onClose={handleClose}
             onOpen={handleOpen}
             value={sortValue}
-            onChange={handleChange}
+            onChange={handleSort}
           >
             <MenuItem value="">
               <em>None</em>
