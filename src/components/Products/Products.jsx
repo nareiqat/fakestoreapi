@@ -9,7 +9,7 @@ export default function Products({data, input, category, value, sortValue}) {
  
 
     return (
-        <div data-testid ="products-1" className={classes.content}>
+        <div  className={classes.content}>
         
             <div className={classes.toolbar}/>
                 <Grid container justify="center" spacing={4}>
