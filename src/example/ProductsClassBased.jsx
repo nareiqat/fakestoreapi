@@ -1,21 +1,24 @@
+//This is an example of how App.js would be if it was created used class based components
 import React from 'react'
+
 
 import {Grid} from '@material-ui/core'
 import Product from './Product/Product';
-import useStyles from './Product/styles'
 
-export default function Products({data, input, category, value, sortValue}) {
-    const classes = useStyles();
- 
 
-    return (
-        <div data-testid ="products-1" className={classes.content}>
+export default class Products extends React.Component {
+   
+    render(){
         
-            <div className={classes.toolbar}/>
+        const {data, input, category, value, sortValue} = this.props
+    
+        return (
+            <div >
+            
+            <div style={{paddingTop:"1rem"}}/>
                 <Grid container justify="center" spacing={4}>
                     {data
                     //sort function, sorts price by hightolow and lowtohigh
-                    // eslint-disable-next-line array-callback-return
                     .sort((a,b) => {
                         if(sortValue === 'hightolow' && a.price > b.price){
                             return -1
@@ -53,12 +56,8 @@ export default function Products({data, input, category, value, sortValue}) {
                     ))}
                     
                 </Grid>
-                
-            
-        </div>
-
-        
-                
-            
-    )
+            </div>
+        )    
+           
+    }
 }
