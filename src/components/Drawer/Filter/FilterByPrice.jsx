@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import { Typography, Slider } from "@material-ui/core";
 import useStyles from "./styles";
 
@@ -12,10 +12,8 @@ export default function FilterByPrice({value, handlePriceChange}) {
   }
   
   return (
-    <div className={classes.root}>
+    <div className={classes.slider}>
       
-
-
       <Typography id="range-slider" gutterBottom>
         Price range
       </Typography>

@@ -39,7 +39,7 @@ export default function Products({minP, maxP ,data, input, category, value, sort
                             return product
                         }
                     }).filter((product) => {
-                        if(product.price >= minP && product.price <= maxP){
+                        if(product.price >= value[0] && product.price <= value[1]){
                             return product
                         }else{
                             console.log("no products in the following range")

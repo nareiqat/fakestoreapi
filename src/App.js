@@ -3,24 +3,23 @@ import './App.css';
 import {useState, useEffect} from 'react' 
 import Products from './components/Products/Products'
 import SearchBar from './components/SearchBar/SearchBar';
-import Filter from './components/Drawer/Filter/FilterByPrice'
-import Sort from './components/Drawer/Sort/Sort'
-import FilterByCategory from './components/Drawer/Filter/FilterByCatergory';
 import Drawer from './components/Drawer/Drawer'
-import FilterByPrice from './components/Drawer/Filter/FilterByPrice';
+
+// import Filter from './components/Drawer/Filter/FilterByPrice'
+// import Sort from './components/Drawer/Sort/Sort'
+// import FilterByCategory from './components/Drawer/Filter/FilterByCatergory';
+// import FilterByPrice from './components/Drawer/Filter/FilterByPrice';
 
 function App() {
 
-  const [input, setInput] = useState("")
   const [data, setData] = useState([]);
+  const [input, setInput] = useState("")
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000);
   const [value, setValue] = useState([0, 1000]);
   const [sortValue, setSortValue] = useState("")
-  const [sortedData, setSortedData ] = useState([])
   const [category, setCategory] = useState("")
+  
   const apiUrl = 'https://fakestoreapi.com/products'
   
 
@@ -37,7 +36,7 @@ function App() {
         .then(
           (result) => {
             setData(result)
-            setSortedData(result)
+            
             setLoading(false);
             console.log(result);
           },
@@ -65,9 +64,7 @@ function App() {
 
   const handlePriceChange = (event, newValue) => {
     setValue(newValue);
-    setMinPrice(newValue[0])
-    setMaxPrice(newValue[1])
-    // console.log(minPrice, maxPrice);
+    
     // console.log(data[0].price)
     
   };
@@ -89,13 +86,9 @@ function App() {
 
   return (
     <div>
-      <SearchBar  max={maxPrice} min={minPrice}  handleChange={inputHandler} handleSubmit={submitHandler} input={input}/>
-      {/* <FilterByCategory category={category} handleCategory={handleCategory}  />
-      <FilterByPrice handleChange={handleFilterChange} value={value}  />
-      <Sort sortValue={sortValue}  handleChange={handleSort}  /> */}
+      <SearchBar  handleChange={inputHandler} handleSubmit={submitHandler} input={input}/>
       <Drawer handlePriceChange={handlePriceChange} value={value} category={category} handleCategory={handleCategory} sortValue={sortValue}  handleSort={handleSort} />
-     
-      <Products sortValue={sortValue} value={value} data={data} input={input} minP={minPrice} maxP={maxPrice} handleSlider={handlePriceChange} category={category} />
+      <Products sortValue={sortValue} value={value} data={data} input={input} handleSlider={handlePriceChange} category={category} />
     </div>
   );
 }
