@@ -59,7 +59,7 @@ export default function SimpleModal({product}) {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
+      <button data-testid ="desc-btn" type="button" onClick={handleOpen}>
         Description
       </button>
       <Modal

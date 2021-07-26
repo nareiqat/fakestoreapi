@@ -6,7 +6,7 @@ import useStyles from './Product/styles';
 
 //Products component returns mapped over products
 
-export default function Products({data, input, category, value, sortValue}) {
+export default function Products({data, input, category, priceValue, sortValue}) {
     const classes = useStyles();
  
 
@@ -45,7 +45,7 @@ export default function Products({data, input, category, value, sortValue}) {
                     //this filter function below checks the price range on the slider, and returns all products in that range
                     //value[0] represents the minimum wile value[1] represents the maximum
                     }).filter((product) => {
-                        if(product.price >= value[0] && product.price <= value[1]){
+                        if(product.price >= priceValue[0] && product.price <= priceValue[1]){
                             return product
                         }else{
                             console.log("no products in the following range")

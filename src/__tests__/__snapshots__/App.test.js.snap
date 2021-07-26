@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`drawer matches snapshot 1`] = `
+<div>
+  <WithStyles(ForwardRef(Button))
+    onClick={[Function]}
+  >
+    Filters
+  </WithStyles(ForwardRef(Button))>
+  <ForwardRef(SwipeableDrawer)
+    anchor="left"
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+  >
+    <div
+      className="makeStyles-list-7"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="presentation"
+    >
+      <WithStyles(ForwardRef(List))>
+        <FilterByPrice />
+        <FilterByCategory />
+        <Sort />
+      </WithStyles(ForwardRef(List))>
+      <WithStyles(ForwardRef(Divider)) />
+    </div>
+  </ForwardRef(SwipeableDrawer)>
+</div>
+`;
+
+exports[`product matches snapshot 1`] = `
+<WithStyles(ForwardRef(Card))
+  className="makeStyles-root-3"
+  data-testid="product-1"
+>
+  <WithStyles(ForwardRef(CardMedia))
+    className="makeStyles-media-4"
+    image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+    title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+  />
+  <WithStyles(ForwardRef(CardContent))>
+    <div
+      className="makeStyles-cardContent-6"
+    >
+      <WithStyles(ForwardRef(Typography))
+        component="h2"
+        gutterBottom={true}
+        variant="h6"
+      >
+        Fjallraven - Foldsack No. 1 Ba...
+      </WithStyles(ForwardRef(Typography))>
+    </div>
+    <div
+      className="makeStyles-cardContent-6"
+    >
+      <WithStyles(ForwardRef(Typography))
+        component="h2"
+        gutterBottom={true}
+        variant="h5"
+      >
+        $
+        109.95
+      </WithStyles(ForwardRef(Typography))>
+    </div>
+  </WithStyles(ForwardRef(CardContent))>
+  <WithStyles(ForwardRef(CardContent))>
+    <WithStyles(ForwardRef(CardActions))
+      className="makeStyles-cardActions-5"
+      disableSpacing={true}
+    >
+      <SimpleModal
+        product={
+          Object {
+            "category": "men's clothing",
+            "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+            "id": 1,
+            "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+            "price": 109.95,
+            "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+          }
+        }
+      />
+      <WithStyles(ForwardRef(IconButton))
+        aria-label="Add to Cart"
+      >
+        <Memo(ForwardRef(AddShoppingCartIcon)) />
+      </WithStyles(ForwardRef(IconButton))>
+    </WithStyles(ForwardRef(CardActions))>
+  </WithStyles(ForwardRef(CardContent))>
+</WithStyles(ForwardRef(Card))>
+`;
+
+exports[`products matches snapshot 1`] = `
+<div>
+  <div />
+  <WithStyles(ForwardRef(Grid))
+    container={true}
+    justify="center"
+    spacing={4}
+  />
+</div>
+`;
+
+exports[`searchbar matches snapshot 1`] = `
+<div
+  className="makeStyles-main-1"
+>
+  <form
+    autoComplete="off"
+    noValidate={true}
+  >
+    <WithStyles(ForwardRef(TextField))
+      id="standard-basic"
+      label="Search for Product"
+    />
+    <WithStyles(ForwardRef(IconButton))>
+      <Memo(ForwardRef(SearchIcon)) />
+    </WithStyles(ForwardRef(IconButton))>
+  </form>
+</div>
+`;

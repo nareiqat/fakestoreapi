@@ -46,7 +46,7 @@ function Product({ product }) {
       </CardContent>
       <CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
-        <SimpleModal data-testid ="desc-btn" product={product} />
+        <SimpleModal  product={product} />
         <IconButton aria-label="Add to Cart" >
           <AddShoppingCart />
         </IconButton>
