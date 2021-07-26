@@ -2,6 +2,8 @@ import React from 'react'
 import {Button, Menu, MenuItem, FormControl, Select,InputLabel} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core';
 
+//Menu component from material UI used to house options for filtering the category
+
 export default function FilterByCategory({handleCategory, category}) {
 
     const useStyles = makeStyles((theme) => ({

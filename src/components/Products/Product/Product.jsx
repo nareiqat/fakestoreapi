@@ -11,11 +11,13 @@ import { AddShoppingCart } from "@material-ui/icons";
 import useStyles from './styles';
 import SimpleModal from "./SimpleModal";
 
+//product object is taken from Products and a card is created with some product information inside it
+
 function Product({ product }) {
 
   const classes = useStyles();
 
-  // const handleAddToCart = () => onAddToCart(product.id, 1);
+  // truncate to reduce length of title and make all cards even height, to view full title a description button was added
   function truncate(string,limit){
     return string.length > limit ? `${string.substr(0,limit)}...` : string;
 }

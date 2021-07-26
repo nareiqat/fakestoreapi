@@ -2,6 +2,8 @@ import React from "react";
 import { Typography, Slider } from "@material-ui/core";
 import useStyles from "./styles";
 
+//Slider component from material UI, filter the price range wanted
+
 export default function FilterByPrice({value, handlePriceChange}) {
 
   const classes = useStyles();

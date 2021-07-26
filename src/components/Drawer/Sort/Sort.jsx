@@ -2,6 +2,8 @@ import React from 'react'
 import { MenuItem, FormControl, Select,InputLabel} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core';
 
+//Similar to filter by category the sort component uses the menu component from material Ui to show different sorting options
+
 export default function Sort({sortValue, handleSort}) {
 
     const useStyles = makeStyles((theme) => ({

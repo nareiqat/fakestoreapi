@@ -1,3 +1,6 @@
+//Drawer is a material UI component provides a side panel when a button is clicked
+
+
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';

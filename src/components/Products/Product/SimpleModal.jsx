@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
 
+//Simple Modal from material UI to view full description
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }

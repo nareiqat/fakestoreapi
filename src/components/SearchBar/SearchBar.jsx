@@ -5,7 +5,9 @@ import SearchIcon from "@material-ui/icons/Search";
 
 import { IconButton, TextField} from "@material-ui/core";
 
-function SearchBar({ data, handleSubmit, handleChange }) {
+//SearchBar from material UI
+
+function SearchBar({ handleSubmit, handleChange }) {
   const classes = useStyles();
 
   return (

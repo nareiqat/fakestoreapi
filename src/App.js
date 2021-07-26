@@ -12,17 +12,19 @@ import Drawer from './components/Drawer/Drawer'
 
 function App() {
 
+  //stores json data from api
   const [data, setData] = useState([]);
+  //stores the value of the input field
   const [input, setInput] = useState("")
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
-  const [value, setValue] = useState([0, 1000]);
+  const [priceValue, setPriceValue] = useState([0, 1000]);
   const [sortValue, setSortValue] = useState("")
   const [category, setCategory] = useState("")
   
   const apiUrl = 'https://fakestoreapi.com/products'
   
-
+  //used a utility function in useEffect hook to fetch json from api and store in state, updates anytime the apiUrl is changed
 
   useEffect(() => {
     const getData = () => {
@@ -51,19 +53,15 @@ function App() {
     getData();
   }, [apiUrl]);
 
+  //sets the input state to the value of the input on the screen
   const inputHandler = (event) => {
     setInput(event.target.value);
     // console.log(input);
   };
 
-  const submitHandler = (event) => {
-    // console.log(input)
-    event.preventDefault()
-    
-  };
-
-  const handlePriceChange = (event, newValue) => {
-    setValue(newValue);
+  // takes the 2 values on the slider and sets them to the value state
+  const handlePriceChange = (event, newPriceValue) => {
+    setPriceValue(newPriceValue);
     
     // console.log(data[0].price)
     
@@ -76,6 +74,7 @@ function App() {
 
   }
 
+  // sets the sortValue state to the value chosen from the dropdown menu
   const handleSort = event => {
     setSortValue(event.target.value)
     console.log(event.target.value)
@@ -86,9 +85,9 @@ function App() {
 
   return (
     <div>
-      <SearchBar  handleChange={inputHandler} handleSubmit={submitHandler} input={input}/>
-      <Drawer handlePriceChange={handlePriceChange} value={value} category={category} handleCategory={handleCategory} sortValue={sortValue}  handleSort={handleSort} />
-      <Products sortValue={sortValue} value={value} data={data} input={input} handleSlider={handlePriceChange} category={category} />
+      <SearchBar  handleChange={inputHandler} input={input}/>
+      <Drawer handlePriceChange={handlePriceChange} priceValue={priceValue} category={category} handleCategory={handleCategory} sortValue={sortValue}  handleSort={handleSort} />
+      <Products sortValue={sortValue} priceValue={priceValue} data={data} input={input} handleSlider={handlePriceChange} category={category} />
     </div>
   );
 }
