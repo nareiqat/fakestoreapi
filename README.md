@@ -9,14 +9,13 @@ The parent file is App.js and state is housed there. I used 3 main components to
 
 Since i got this challenge at a time I wanted to learn unit testing I took the time to try and learn how to implement simple tests, I created snapshot tests for all components and Ui rendering test for App.js to make sure everything is running correctly. I believe this part was hard on me as I was learning it during the challenge and wanted to show my ability to learn while implementing previous knowledge!
 
-
 # How to run
 
 npm start or yarn start
 
 # Challenges faced
 
-I mostly faced challenge trying to make my filter and sort functions, even though I understood how to use filter it took me some trial and error to figure out the best way to put the algorithim together and relate props with the product data.
+I mostly faced challenge trying to make my filter and sort functions, even though I understood how to use filter it took me some trial and error to figure out the best way to put the algorithim together and relate props with the product data. The only thing I am still trying to figure out is how to return the products to there original order if the sort option is none. Also creating tests!(still learning)
 
 # I think I was given enough time for the junior level roles to create a simple and easy to use front-end design. If I had more time I think I am capable of tackling the senior level criteria that were mentioned in the challenge!
 

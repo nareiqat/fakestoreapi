@@ -65,16 +65,6 @@ test("drawer matches snapshot", () => {
   expect(toJSON(drawer)).toMatchSnapshot();
 })
 
-describe('Test Button component', () => {
-  it('Test click event', () => {
-    const mockCallBack = jest.fn();
-
-    const simpleModal = shallow((<SimpleModal onClick={mockCallBack} product={mockProduct}/>));
-    const button = simpleModal.find("button").simulate('click')
-    expect(button.target.value).toEqual(mockProduct.description);
-    // console.log(button.value)
-  });
-});
 
 
 

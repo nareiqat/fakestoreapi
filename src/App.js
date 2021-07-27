@@ -1,9 +1,9 @@
-// import logo from './logo.svg';
-import './App.css';
 import {useState, useEffect} from 'react' 
 import Products from './components/Products/Products'
 import SearchBar from './components/SearchBar/SearchBar';
-import Drawer from './components/Drawer/Drawer'
+import Drawer from './components/Drawer/Drawer';
+import LoadingComponent from './components/LoadingComponent'
+
 
 
 function App() {
@@ -12,10 +12,15 @@ function App() {
   const [data, setData] = useState([]);
   //stores the value of the input field
   const [input, setInput] = useState("")
+  //stores error value
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState('');
+  //stores loading boolean
+  const [loading, setLoading] = useState(true);
+  //state array showing min and max price value
   const [priceValue, setPriceValue] = useState([0, 1000]);
+  //state for sort option
   const [sortValue, setSortValue] = useState("")
+  //state for category option
   const [category, setCategory] = useState("")
   
   const apiUrl = 'https://fakestoreapi.com/products'
@@ -34,20 +39,20 @@ function App() {
         .then(
           (result) => {
             setData(result)
-            
+          
             setLoading(false);
             console.log(result);
           },
           (err) => {
             setError(err);
-            setLoading(false);
+            setLoading(true);
             alert(err.message);
             console.log(err.message);
           }
         );
     };
     getData();
-  }, [apiUrl]);
+  }, []);
 
   //sets the input state to the value of the input on the screen
   const inputHandler = (event) => {
@@ -76,21 +81,42 @@ function App() {
     console.log(event.target.value)
   }
 
-  const resetFilters = (priceValue, category, sortValue) => {
+  //resets filters to there inital state and the Ui is rerendered
+  const resetFilters = () => {
     setPriceValue([0,1000])
     setCategory("")
     setSortValue("")
+    // window.location.reload()
   }
-  
-  
 
-  return (
+  //sorts the price in ascending or descending depending on sort value chose
+  //if diff is 0 nothing changes
+  //if a.price is greater diff is positive and sign returns 1, thus the products are sorted in ascending order
+  //if b.price is greater
+  const sortPrice = (sortValue, data) => {
+    if(sortValue === 'lowtohigh' || sortValue === 'hightolow'){
+      data.sort((a,b) => {
+        const diff = a.price - b.price;
+        if(diff === 0){
+          return 0
+        }
+        const sign = Math.abs(diff)/diff
+        return sortValue === 'lowtohigh' ? sign:-sign
+      })
+    }
+  }
+
+
+  return ( 
+    loading ? <LoadingComponent /> : 
     <div>
       <SearchBar  handleChange={inputHandler} input={input}/>
       <Drawer resetFilters={resetFilters} handlePriceChange={handlePriceChange} priceValue={priceValue} category={category} handleCategory={handleCategory} sortValue={sortValue}  handleSort={handleSort} />
-      <Products sortValue={sortValue} priceValue={priceValue} data={data} input={input} handleSlider={handlePriceChange} category={category} />
-    </div>
-  );
+      <Products  sortPrice={sortPrice} sortValue={sortValue} priceValue={priceValue} data={data} input={input} handleSlider={handlePriceChange} category={category} />
+    </div> 
+    
+  )
+  
 }
 
 export default App;

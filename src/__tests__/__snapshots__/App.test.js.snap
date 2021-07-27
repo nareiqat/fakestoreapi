@@ -23,6 +23,9 @@ exports[`drawer matches snapshot 1`] = `
         <FilterByPrice />
         <FilterByCategory />
         <Sort />
+        <button>
+          Reset filters
+        </button>
       </WithStyles(ForwardRef(List))>
       <WithStyles(ForwardRef(Divider)) />
     </div>
