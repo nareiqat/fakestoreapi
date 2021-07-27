@@ -49,6 +49,7 @@ export default function Products({data, input, category, priceValue, sortValue})
                             return product
                         }else{
                             console.log("no products in the following range")
+                            
                         }
                     })
                     .map((product) => (

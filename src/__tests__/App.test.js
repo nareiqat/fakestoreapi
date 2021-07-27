@@ -70,8 +70,9 @@ describe('Test Button component', () => {
     const mockCallBack = jest.fn();
 
     const simpleModal = shallow((<SimpleModal onClick={mockCallBack} product={mockProduct}/>));
-    const button = simpleModal.getByTestId("desc-btn")
-    expect(button.value).toEqual("description");
+    const button = simpleModal.find("button").simulate('click')
+    expect(button.target.value).toEqual(mockProduct.description);
+    // console.log(button.value)
   });
 });
 
@@ -79,6 +80,3 @@ describe('Test Button component', () => {
 
 
 
-{/* <SearchBar  handleChange={inputHandler} input={input}/>
-<Drawer handlePriceChange={handlePriceChange} priceValue={priceValue} category={category} handleCategory={handleCategory} sortValue={sortValue}  handleSort={handleSort} />
-<Products sortValue={sortValue} priceValue={priceValue} data={data} input={input} handleSlider={handlePriceChange} category={category} /> */}

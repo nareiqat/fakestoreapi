@@ -5,10 +5,6 @@ import Products from './components/Products/Products'
 import SearchBar from './components/SearchBar/SearchBar';
 import Drawer from './components/Drawer/Drawer'
 
-// import Filter from './components/Drawer/Filter/FilterByPrice'
-// import Sort from './components/Drawer/Sort/Sort'
-// import FilterByCategory from './components/Drawer/Filter/FilterByCatergory';
-// import FilterByPrice from './components/Drawer/Filter/FilterByPrice';
 
 function App() {
 
@@ -80,13 +76,18 @@ function App() {
     console.log(event.target.value)
   }
 
+  const resetFilters = (priceValue, category, sortValue) => {
+    setPriceValue([0,1000])
+    setCategory("")
+    setSortValue("")
+  }
   
   
 
   return (
     <div>
       <SearchBar  handleChange={inputHandler} input={input}/>
-      <Drawer handlePriceChange={handlePriceChange} priceValue={priceValue} category={category} handleCategory={handleCategory} sortValue={sortValue}  handleSort={handleSort} />
+      <Drawer resetFilters={resetFilters} handlePriceChange={handlePriceChange} priceValue={priceValue} category={category} handleCategory={handleCategory} sortValue={sortValue}  handleSort={handleSort} />
       <Products sortValue={sortValue} priceValue={priceValue} data={data} input={input} handleSlider={handlePriceChange} category={category} />
     </div>
   );

@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SwipeableTemporaryDrawer({handlePriceChange, value, category, handleCategory, sortValue, handleSort }) {
+export default function SwipeableTemporaryDrawer({resetFilters, handlePriceChange, priceValue, category, handleCategory, sortValue, handleSort }) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -38,6 +38,8 @@ export default function SwipeableTemporaryDrawer({handlePriceChange, value, cate
     setState({ ...state, [anchor]: open });
   };
 
+
+
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -48,16 +50,11 @@ export default function SwipeableTemporaryDrawer({handlePriceChange, value, cate
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))} */}
-        <FilterByPrice handlePriceChange={handlePriceChange} value={value}/>
+        
+        <FilterByPrice handlePriceChange={handlePriceChange} value={priceValue}/>
         <FilterByCategory category={category} handleCategory={handleCategory} />
         <Sort sortValue={sortValue} handleSort={handleSort}/>
-        {/* <button onClick={resetFilter}>Reset filters</button> */}
+        <button onClick={resetFilters}>Reset filters</button>
       </List>
       <Divider />
       
