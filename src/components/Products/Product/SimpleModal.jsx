@@ -50,6 +50,7 @@ export default function SimpleModal({product}) {
       <h2 id="simple-modal-title">
       {product.title}
       </h2>
+      <img style={{width:"300px", height:"300px"}} src={product.image} alt={product.title} />
       <p id="simple-modal-description">
         {product.description}
       </p>
@@ -60,7 +61,7 @@ export default function SimpleModal({product}) {
   return (
     <div>
       <button data-testid ="desc-btn" type="button" onClick={handleOpen}>
-        Description
+        Detailed View
       </button>
       <Modal
         open={open}
