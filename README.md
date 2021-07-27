@@ -18,7 +18,7 @@ npm start or yarn start
 I mostly faced challenge trying to make my filter and sort functions, even though I understood how to use filter it took me some trial and error to figure out the best way to put the algorithim together and relate props with the product data. Also creating tests!(still learning)
 
 # if i had more time?
- I think I would have tried to figure out how to reset the sorting function and make the webpage look more stylish. Also If I had more time I think I am capable of tackling the senior level criteria that were mentioned in the challenge!
+I would make the webpage look more stylish. Also If I had more time I think I am capable of tackling the senior level criteria that were mentioned in the challenge!
 
 # Ways to improve the test
 
