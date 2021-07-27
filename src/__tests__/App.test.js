@@ -36,6 +36,19 @@ const jsonArray = [
   }
 ]
 
+const sortPrice = (sortValue, data) => {
+  if(sortValue === 'lowtohigh' || sortValue === 'hightolow'){
+    data.sort((a,b) => {
+      const diff = a.price - b.price;
+      if(diff === 0){
+        return 0
+      }
+      const sign = Math.abs(diff)/diff
+      return sortValue === 'lowtohigh' ? sign:-sign
+    })
+  }
+}
+
 // test if App.js is rendering all components
 describe("rendering components in app", () => {
   it("renders App component without crashing", () => {
@@ -51,7 +64,7 @@ test("searchbar matches snapshot", () => {
 
 // added some data to mimic some props passed to the products component
 test("products matches snapshot", () => {
-  const products = shallow(<Products data={jsonArray} product={mockProduct} input={mockProduct.title}/>)
+  const products = shallow(<Products sortPrice={sortPrice} data={jsonArray} product={mockProduct} input={mockProduct.title}/>)
   expect(toJSON(products)).toMatchSnapshot();
 })
 

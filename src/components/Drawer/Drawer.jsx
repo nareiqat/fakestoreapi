@@ -19,6 +19,10 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
+  button: {
+    border: "1px solid",
+    marginLeft:'1rem'
+  }
 });
 
 export default function SwipeableTemporaryDrawer({resetFilters, handlePriceChange, priceValue, category, handleCategory, sortValue, handleSort }) {
@@ -54,7 +58,7 @@ export default function SwipeableTemporaryDrawer({resetFilters, handlePriceChang
         <FilterByPrice handlePriceChange={handlePriceChange} value={priceValue}/>
         <FilterByCategory category={category} handleCategory={handleCategory} />
         <Sort sortValue={sortValue} handleSort={handleSort}/>
-        <button onClick={resetFilters}>Reset filters</button>
+        <Button className={classes.button} onClick={resetFilters}>Reset filters</Button>
       </List>
       <Divider />
       
