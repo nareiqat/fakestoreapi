@@ -5,6 +5,10 @@ and the documentation is clear and provides examples to use. In this particular 
 
 The parent file is App.js and state is housed there. I used 3 main components to build out my UI, the first is the SearchBar which essentially an input field from material UI with a search icon, the allows the user the type in the full title or part of the title they are searching for. The second is a Drawer, were I had the filters and sort. Drawer is also a material UI component that slides from the left to the right when clicked like some ecommerce sites. The last component is the Products were all the logic for sorting and filtering is.For the filter functions I used the high-order function  filter, using props passed down I compared the needed values for price and category to data from the api inorder to render the needed products either by category or price range. For sorting I implemented a typical sort function to compare the price of products to each other sort in ascending or descending. At last I mapped over the data stored in state which was fetched from api and displayed on the screen. The products component has a subcomponent product which renders each product into a material UI card component.
 
+# Unit testing
+
+Since i got this challenge at a time I wanted to learn unit testing I took the time to try and learn how to implement simple tests, I created snapshot tests for all components and Ui rendering test for App.js to make sure everything is running correctly. I believe this part was hard on me as I was learning it during the challenge and wanted to show my ability to learn while implementing previous knowledge!
+
 
 # How to run
 
