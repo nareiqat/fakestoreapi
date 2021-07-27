@@ -103,6 +103,15 @@ function App() {
         const sign = Math.abs(diff)/diff
         return sortValue === 'lowtohigh' ? sign:-sign
       })
+    } else {
+      data.sort((a,b) => {
+        const diff = a.id - b.id;
+        if(diff === 0){
+          return 0
+        }
+        const sign = Math.abs(diff)/diff
+        return sortValue === '' ? sign:0
+      })
     }
   }
 
