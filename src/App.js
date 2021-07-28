@@ -57,6 +57,7 @@ function App() {
   //sets the input state to the value of the input on the screen
   const inputHandler = (event) => {
     setInput(event.target.value);
+    
     // console.log(input);
   };
 
@@ -78,15 +79,16 @@ function App() {
   // sets the sortValue state to the value chosen from the dropdown menu
   const handleSort = event => {
     setSortValue(event.target.value)
-    console.log(event.target.value)
+    // console.log(event.target.value)
   }
 
   //resets filters to there inital state and the Ui is rerendered
-  const resetFilters = () => {
+  const resetFilters = (event) => {
     setPriceValue([0,1000])
     setCategory("")
     setSortValue("")
-    // window.location.reload()
+    setInput("")
+  
   }
 
   //sorts the price in ascending or descending depending on sort value chose

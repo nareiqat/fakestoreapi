@@ -7,7 +7,7 @@ import { IconButton, TextField} from "@material-ui/core";
 
 //SearchBar from material UI
 
-function SearchBar({ handleSubmit, handleChange }) {
+function SearchBar({ input, handleChange }) {
   const classes = useStyles();
 
   return (
@@ -17,8 +17,9 @@ function SearchBar({ handleSubmit, handleChange }) {
           id="standard-basic"
           label="Search for Product"
           onChange={handleChange}
+          value={input}
         />
-        <IconButton  onClick={handleSubmit}>
+        <IconButton >
           <SearchIcon />
         </IconButton>
       </form>
