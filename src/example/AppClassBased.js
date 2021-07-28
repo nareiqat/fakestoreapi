@@ -7,6 +7,7 @@ import {Component} from 'react'
 import Products from './components/Products/Products'
 import SearchBar from './components/SearchBar/SearchBar'
 import Drawer from './components/Drawer/Drawer'
+import LoadingComponent from '../components/LoadingComponent';
 
 class App extends Component {
 
@@ -18,49 +19,12 @@ class App extends Component {
       input : "",
       error: "",
       loading: true,
-      value: [0,1000],
+      priceValue: [0,1000],
       sortValue: "",
       category: ""
 
     }
   }
-  inputHandler = (event) => {
-    this.setState({
-      input: event.target.value
-      // console.log(input);
-
-    });
-  }  
-
-
-  handlePriceChange = (event, newValue) => {
-    this.setState({
-      value: newValue
-
-    });
-  };
-
-  handleCategory = (event) => {
-   
-    this.setState({
-      category: event.target.value
-    })
-    // console.log(event.target.value)
-    // console.log(category);
-
-  }
-
-  handleSort = event => {
-    this.setState({
-      setSortValue: event.target.value
-    })
-    
-    // console.log(event.target.value)
-  }
-
-
-  
-
   componentDidMount(){
     const apiUrl = 'https://fakestoreapi.com/products'
     const getData = () => {
@@ -92,6 +56,71 @@ class App extends Component {
     getData();
   }
 
+  inputHandler = (event) => {
+    this.setState({
+      input: event.target.value
+      // console.log(input);
+
+    });
+  }  
+
+
+  handlePriceChange = (event, newPriceValue) => {
+    this.setState({
+      valuePrice: newPriceValue
+
+    });
+  };
+
+  handleCategory = (event) => {
+   
+    this.setState({
+      category: event.target.value
+    })
+    // console.log(event.target.value)
+    // console.log(category);
+
+  }
+
+  handleSort = event => {
+    this.setState({
+      setSortValue: event.target.value
+    })
+    
+    // console.log(event.target.value)
+  }
+
+  resetFilters = () => {
+    this.setState({
+      priceValue: [0,1000],
+      category: "",
+      sortValue: ""
+    })
+  }
+  sortPrice = (sortValue, data) => {
+    if(sortValue === 'lowtohigh' || sortValue === 'hightolow'){
+      data.sort((a,b) => {
+        const diff = a.price - b.price;
+        if(diff === 0){
+          return 0
+        }
+        const sign = Math.abs(diff)/diff
+        return sortValue === 'lowtohigh' ? sign:-sign
+      })
+    } else {
+      data.sort((a,b) => {
+        const diff = a.id - b.id;
+        if(diff === 0){
+          return 0
+        }
+        const sign = Math.abs(diff)/diff
+        return sortValue === '' ? sign:0
+      })
+    }
+  }
+  
+
+  
 
   render(){
 
@@ -99,15 +128,15 @@ class App extends Component {
       return <div>loading</div>
     }
 
-    return (
+    return ( 
+      this.state.loading ? <LoadingComponent /> : 
       <div>
-        <SearchBar   handleChange={this.inputHandler} handleSubmit={this.submitHandler} input={this.state.input}/>
-       
-        <Drawer handlePriceChange={this.handlePriceChange} value={this.state.value} category={this.state.category} handleCategory={this.handleCategory} sortValue={this.sortValue}  handleSort={this.handleSort} />
-       
-        <Products sortValue={this.state.sortValue} value={this.state.value} data={this.state.data} input={this.state.input}  handleSlider={this.handlePriceChange} category={this.state.category} />
-      </div>
-    );
+        <SearchBar  handleChange={this.inputHandler} input={this.state.input}/>
+        <Drawer resetFilters={this.resetFilters} handlePriceChange={this.handlePriceChange} priceValue={this.state.priceValue} category={this.state.category} handleCategory={this.handleCategory} sortValue={this.state.sortValue}  handleSort={this.handleSort} />
+        <Products  sortPrice={this.state.sortPrice} sortValue={this.state.sortValue} priceValue={this.state.priceValue} data={this.state.data} input={this.state.input} handleSlider={this.handlePriceChange} category={this.state.category} />
+      </div> 
+      
+    )
   }
 
   
