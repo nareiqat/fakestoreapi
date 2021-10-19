@@ -83,12 +83,11 @@ function App() {
   }
 
   //resets filters to there inital state and the Ui is rerendered
-  const resetFilters = (event) => {
+  const resetFilters = () => {
     setPriceValue([0,1000])
     setCategory("")
     setSortValue("")
     setInput("")
-  
   }
 
   //sorts the price in ascending or descending depending on sort value chose
@@ -105,7 +104,8 @@ function App() {
         const sign = Math.abs(diff)/diff
         return sortValue === 'lowtohigh' ? sign:-sign
       })
-    } else {
+    } 
+    else {
       data.sort((a,b) => {
         const diff = a.id - b.id;
         if(diff === 0){

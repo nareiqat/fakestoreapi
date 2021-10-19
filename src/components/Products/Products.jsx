@@ -3,6 +3,7 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import Product from "./Product/Product";
 import useStyles from "./Product/styles";
+import noItems from "./noItems";
 
 //Products component returns mapped over products
 
@@ -50,6 +51,7 @@ export default function Products({
               return product;
             } else {
               console.log("No products in this range");
+              
             }
           })
           .map((product) => (
